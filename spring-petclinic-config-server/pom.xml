@@ -25,12 +25,14 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
+      <version>3.0.8</version>
     </dependency>
 
     <!-- Spring Cloud -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-config-server</artifactId>
+      <version>4.0.3</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jaxb</groupId>
