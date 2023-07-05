@@ -1,0 +1,13 @@
+/.idea/encodings.xml
+/.idea/compiler.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/spring-petclinic-admin-server/spring-petclinic-admin-server.iml
+/spring-petclinic-api-gateway/spring-petclinic-api-gateway.iml
+/spring-petclinic-config-server/spring-petclinic-config-server.iml
+/spring-petclinic-customers-service/spring-petclinic-customers-service.iml
+/spring-petclinic-microservices.iml
+/spring-petclinic-vets-service/spring-petclinic-vets-service.iml
+/spring-petclinic-visits-service/spring-petclinic-visits-service.iml
+/.idea/vcs.xml
+/.idea/workspace.xml
