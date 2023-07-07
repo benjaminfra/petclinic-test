@@ -1,7 +1,6 @@
 package org.springframework.samples.petclinic.api.boundary.web;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
@@ -14,14 +13,12 @@ import org.springframework.samples.petclinic.api.dto.OwnerDetails;
 import org.springframework.samples.petclinic.api.dto.PetDetails;
 import org.springframework.samples.petclinic.api.dto.VisitDetails;
 import org.springframework.samples.petclinic.api.dto.Visits;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import java.net.ConnectException;
-import java.util.Collections;
+import java.util.List;
 
-@ExtendWith(SpringExtension.class)
 @WebFluxTest(controllers = ApiGatewayController.class)
 @Import({ReactiveResilience4JAutoConfiguration.class, CircuitBreakerConfiguration.class})
 class ApiGatewayControllerTest {
@@ -54,7 +51,7 @@ class ApiGatewayControllerTest {
         visit.setPetId(cat.getId());
         visits.getItems().add(visit);
         Mockito
-            .when(visitsServiceClient.getVisitsForPets(Collections.singletonList(cat.getId())))
+            .when(visitsServiceClient.getVisitsForPets(List.of(cat.getId())))
             .thenReturn(Mono.just(visits));
 
         client.get()
@@ -84,7 +81,7 @@ class ApiGatewayControllerTest {
             .thenReturn(Mono.just(owner));
 
         Mockito
-            .when(visitsServiceClient.getVisitsForPets(Collections.singletonList(cat.getId())))
+            .when(visitsServiceClient.getVisitsForPets(List.of(cat.getId())))
             .thenReturn(Mono.error(new ConnectException("Simulate error")));
 
         client.get()
