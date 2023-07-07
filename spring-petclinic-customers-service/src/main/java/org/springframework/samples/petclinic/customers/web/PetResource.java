@@ -90,7 +90,7 @@ class PetResource {
 
     private Pet findPetById(int petId) {
         Optional<Pet> pet = petRepository.findById(petId);
-        if (!pet.isPresent()) {
+        if (pet.isEmpty()) {
             throw new ResourceNotFoundException("Pet "+petId+" not found");
         }
         return pet.get();

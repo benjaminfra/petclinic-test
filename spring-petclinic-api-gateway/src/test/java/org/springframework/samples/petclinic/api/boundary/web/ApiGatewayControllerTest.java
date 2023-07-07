@@ -19,7 +19,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import java.net.ConnectException;
-import java.util.Collections;
+import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @WebFluxTest(controllers = ApiGatewayController.class)
@@ -54,7 +54,7 @@ class ApiGatewayControllerTest {
         visit.setPetId(cat.getId());
         visits.getItems().add(visit);
         Mockito
-            .when(visitsServiceClient.getVisitsForPets(Collections.singletonList(cat.getId())))
+            .when(visitsServiceClient.getVisitsForPets(List.of(cat.getId())))
             .thenReturn(Mono.just(visits));
 
         client.get()
@@ -84,7 +84,7 @@ class ApiGatewayControllerTest {
             .thenReturn(Mono.just(owner));
 
         Mockito
-            .when(visitsServiceClient.getVisitsForPets(Collections.singletonList(cat.getId())))
+            .when(visitsServiceClient.getVisitsForPets(List.of(cat.getId())))
             .thenReturn(Mono.error(new ConnectException("Simulate error")));
 
         client.get()
